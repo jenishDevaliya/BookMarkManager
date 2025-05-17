@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} Welcome - BOOKmark Manager {% endblock %}
+
+{% block content %}
+    <!-- main content start -->
+    <div class="container text-center mt-5">
+        <h1 class="display-4">Welcome to Bookmark Manager</h1>
+        <p class="lead">Easily save, organize, and manage your bookmarks online.</p>
+        
+{% if user.is_authenticated %}
+<a href="{% url 'dashboard' %}" class="btn btn-outline-primary btn-lg">Go To Dashboard</a>
+{% else %}
+<a href="{% url 'signup' %}" class="btn btn-success btn-lg me-2">Signup</a>
+<a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg">Login</a>
+{% endif %}
+</div>
+
+<!--Footer(Only on Home Paage)-->
+
+<footer class="text-center mt-5 pt-5 text-muted">
+ Designed and Developed with &#10084; by ABC XYZ
+</footer>
+{% endblock %}
+<!--main content end-->

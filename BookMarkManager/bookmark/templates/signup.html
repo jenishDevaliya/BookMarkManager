@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup - Bookmark Manager{% endblock %}
+
+{% block content %}
+<!-- Main content start -->
+<div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center bg-light">
+  <div class="card shadow-lg p-4" style="width: 350px;">
+    <h3 class="text-center mb-4">Create Account</h3>
+
+    {% if messages %}
+      {% for m in messages %}
+        <div class="alert {% if m.tags == 'error' %}alert-danger{% else %}alert-{{ m.tags }}{% endif %}">
+          {{ m }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Enter username" required autocomplete="username">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" placeholder="Enter email" required autocomplete="email">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Password" required autocomplete="new-password">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" name="confirm_password" class="form-control" placeholder="Confirm password" required autocomplete="new-password">
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Signup</button>
+    </form>
+
+    <p class="text-center mt-4">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+  </div>
+</div>
+<!-- Main content end -->
+{% endblock %}
